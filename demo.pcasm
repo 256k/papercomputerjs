@@ -1,0 +1,16 @@
+#############################################
+# computer contains 5 registers (1 to 5)
+# computer contains 5 operators:
+# inc: increases [register] by 1
+# dec: decreases [register] by 1
+# jmp: jumps to line [value]
+# isz: is [register] value 0, 
+#      if yes: skip next line, else ignore.
+# stp: terminates program.
+#############################################
+inc 1
+inc 2 
+isz 3 
+stp
+inc 3
+jmp 1
