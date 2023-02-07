@@ -1,9 +1,13 @@
 var fs = require('fs');
-
+const process = require('process');
+process.argv.forEach((val, index) => {
+  console.log(`${index}: ${val}`);
+});
 let stack = [0,0,0,0,0];
 
-let lineList = fs.readFileSync('test.txt','utf8', function(err, data) {
-  return data;
+let lineList = fs.readFileSync(process.argv[2],'utf8', function(err, data) {
+  if (err) console.log(err);
+    else return data;
  });
 
 lineList = lineList.split('\n');
@@ -15,7 +19,7 @@ while (true) {
   console.log("Command: ", splitLineList[i][0]);
   console.log("Register: ", splitLineList[i][1]);
   console.log("Value: ", stack[splitLineList[i][1]-1] );
-  console.log(stack[splitLineList[i][1]-1] == 0);
+  console.log("is zero: ", stack[splitLineList[i][1]-1] == 0);
   console.log("============");
   if (splitLineList[i][0] == "inc") { stack[splitLineList[i][1]-1] += 1;}
   else if (splitLineList[i][0] == "dec") { stack[splitLineList[i][1]-1] -= 1 }
